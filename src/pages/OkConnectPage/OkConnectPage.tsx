@@ -9,7 +9,7 @@ export const OkConnectPage: FC = () => {
         onClick={() => {
           const okxTonConnect = new OKXTonConnect({
             metaData: {
-              name: "TrialMiniApp",
+              name: "NanonFish",
               icon: "https://playeroneworld.s3.ap-southeast-1.amazonaws.com/test/happyaqugame.png",
             },
           });
