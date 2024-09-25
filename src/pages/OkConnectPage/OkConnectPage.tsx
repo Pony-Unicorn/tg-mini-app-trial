@@ -18,7 +18,8 @@ export const OkConnectPage: FC = () => {
 
           okxTonConnect
             .connect({
-              redirect: "tg://t.me/Elara007Bot/trial",
+              // redirect: "tg://t.me/Elara007Bot/trial",
+              redirect: "tg://resolve",
               openUniversalLink: true,
             })
             .then((res) => {
