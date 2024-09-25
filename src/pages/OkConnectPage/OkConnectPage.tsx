@@ -14,11 +14,12 @@ export const OkConnectPage: FC = () => {
             },
           });
 
+          okxTonConnect.restoreConnection()
           console.log("okxTonConnect", okxTonConnect);
 
           okxTonConnect
             .connect({
-              redirect: "tg://https://t.me/Elara007Bot/trial",
+              redirect: "tg://t.me/Elara007Bot/trial",
               openUniversalLink: true,
             })
             .then((res) => {
