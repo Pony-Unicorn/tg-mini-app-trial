@@ -47,16 +47,17 @@ const Inner: FC = () => {
 export const Root: FC = () => (
   <ErrorBoundary fallback={ErrorBoundaryError}>
     <Inner />
+
     <div
       style={{
         position: "absolute",
-        bottom: 0,
-        right: 0,
+        top: 5,
+        right: 5,
         color: "white",
         fontSize: "8px",
       }}
     >
-      Version: {pkg.version}
+      {pkg.version}
     </div>
   </ErrorBoundary>
 );
