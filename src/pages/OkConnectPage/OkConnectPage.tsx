@@ -34,5 +34,3 @@ export const OkConnectPage: FC = () => {
     </div>
   );
 };
-
-export default OkConnectPage;
