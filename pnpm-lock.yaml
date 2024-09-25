@@ -24,8 +24,8 @@ importers:
         specifier: ^3.0.1
         version: 3.3.0
       okxconnect:
-        specifier: ^1.1.7
-        version: 1.1.7
+        specifier: ^1.1.9
+        version: 1.1.9
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -1419,8 +1419,8 @@ packages:
     resolution: {integrity: sha512-yBYjY9QX2hnRmZHAjG/f13MzmBzxzYgQhFrke06TTyKY5zSTEqkOeukBzIdVA3j3ulu8Qa3MbVFShV7T2RmGtQ==}
     engines: {node: '>= 0.4'}
 
-  okxconnect@1.1.7:
-    resolution: {integrity: sha512-6T7Jy93eMrJDttcs6n7fQgAXi3JP3Q42nAs2LW8gj0HLM2aAykpU6tMmKpcHZ1kkgBi4zDwrC7hkNZEftrXpIQ==}
+  okxconnect@1.1.9:
+    resolution: {integrity: sha512-ZqadOfNVuB27BLDMHc3rpzjNNJrHUqf4SqIPooY7e+6ZvqdS6IKuxprOtygmnpH1DSTTqP/7b3B+qea4B6/rFw==}
 
   once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
@@ -3237,7 +3237,7 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.0.0
 
-  okxconnect@1.1.7:
+  okxconnect@1.1.9:
     dependencies:
       '@stablelib/ed25519': 1.0.3
       '@stablelib/random': 1.0.2

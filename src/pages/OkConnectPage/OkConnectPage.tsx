@@ -1,26 +1,38 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { OKXTonConnect } from "okxconnect";
 
 export const OkConnectPage: FC = () => {
+  const okxTonConnect = useMemo(
+    () =>
+      new OKXTonConnect({
+        metaData: {
+          name: "NanonFish",
+          icon: "https://playeroneworld.s3.ap-southeast-1.amazonaws.com/test/happyaqugame.png",
+        },
+      }),
+    []
+  );
+
   return (
     <div>
       <h2>OkConnectPage</h2>
       <button
         onClick={() => {
-          const okxTonConnect = new OKXTonConnect({
-            metaData: {
-              name: "NanonFish",
-              icon: "https://playeroneworld.s3.ap-southeast-1.amazonaws.com/test/happyaqugame.png",
-            },
-          });
+          // const okxTonConnect = new OKXTonConnect({
+          //   metaData: {
+          //     name: "NanonFish",
+          //     icon: "https://playeroneworld.s3.ap-southeast-1.amazonaws.com/test/happyaqugame.png",
+          //   },
+          // });
 
-          console.log("okxTonConnect", okxTonConnect);
+          console.log("okxTonConnect", okxTonConnect.connect);
 
           okxTonConnect
             .connect({
               redirect: "tg://resolve",
               openUniversalLink: true,
             })
+            // .connect()
             .then((res) => {
               console.log("tg-res", res);
             })
