@@ -10,15 +10,14 @@ export const OkConnectPage: FC = () => {
           const okxTonConnect = new OKXTonConnect({
             metaData: {
               name: "TrialMiniApp",
-              icon: "https://ton.vote/logo.png",
+              icon: "https://playeroneworld.s3.ap-southeast-1.amazonaws.com/test/happyaqugame.png",
             },
           });
 
-          console.log("okxTonConnect", okxTonConnect.provider);
+          console.log("okxTonConnect", okxTonConnect);
 
           okxTonConnect
             .connect({
-              // redirect: "tg://t.me/Elara007Bot/trial",
               redirect: "tg://resolve",
               openUniversalLink: true,
             })
@@ -35,3 +34,31 @@ export const OkConnectPage: FC = () => {
     </div>
   );
 };
+
+//   // okxTon的链接
+//   async okxTonConnectHandle():Promise<boolean> {
+//     try {
+//         const okxTonConnect = new OKXTonConnectSDK.OKXTonConnect({
+//             metaData: {
+//                 name: "NanonFish",
+//                 icon: "https://playeroneworld.s3.ap-southeast-1.amazonaws.com/test/happyaqugame.png"
+//             }
+//         });
+//         console.log("okxTonConnect:" , okxTonConnect);
+//         await okxTonConnect.connect({
+//             redirect: "https://t.me/NanonFishBot/NanonFish",
+//             openUniversalLink: true
+//         });
+//         return true;
+//     } catch (error) {
+//         if (error.code === OKXTonConnectSDK.OKX_CONNECT_ERROR_CODES.USER_REJECTS_ERROR) {
+//             alert('User reject');
+//         } else if (error.code === OKXTonConnectSDK.OKX_CONNECT_ERROR_CODES.ALREADY_CONNECTED_ERROR) {
+//             alert('Already connected');
+//         } else {
+//             alert('Unknown error happened');
+//         }
+//         return false;
+//     }
+
+// }
