@@ -44,10 +44,10 @@ export const App: FC = () => {
 
   // Don't forget to attach the navigator to allow it to control the BackButton state as well
   // as browser history.
-  // useEffect(() => {
-  //   navigator.attach();
-  //   return () => navigator.detach();
-  // }, [navigator]);
+  useEffect(() => {
+    navigator.attach();
+    return () => navigator.detach();
+  }, [navigator]);
 
   return (
     <AppRoot
