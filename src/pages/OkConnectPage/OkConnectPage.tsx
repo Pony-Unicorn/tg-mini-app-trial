@@ -14,8 +14,7 @@ export const OkConnectPage: FC = () => {
             },
           });
 
-          okxTonConnect.restoreConnection()
-          console.log("okxTonConnect", okxTonConnect);
+          console.log("okxTonConnect", okxTonConnect.provider);
 
           okxTonConnect
             .connect({
