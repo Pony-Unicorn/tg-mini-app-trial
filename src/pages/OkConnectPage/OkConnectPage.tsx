@@ -19,7 +19,14 @@ export const OkConnectPage: FC = () => {
     if (okxTonConnect?.connected && okxTonConnect?.account?.address) {
       setAddress(okxTonConnect?.account?.address);
     }
-  }, [okxTonConnect?.connected, okxTonConnect?.account?.address]);
+
+    console.log("okxTonConnect?.account", okxTonConnect?.account);
+    console.log("okxTonConnect?.wallet", okxTonConnect?.wallet);
+  }, [
+    okxTonConnect,
+    okxTonConnect?.connected,
+    okxTonConnect?.account?.address,
+  ]);
 
   return (
     <div>
