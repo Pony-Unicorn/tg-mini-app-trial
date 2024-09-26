@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import { OKXTonConnect } from "okxconnect";
 
 export const OkConnectPage: FC = () => {
@@ -15,6 +15,12 @@ export const OkConnectPage: FC = () => {
     []
   );
 
+  useEffect(() => {
+    if (okxTonConnect?.connected && okxTonConnect?.account?.address) {
+      setAddress(okxTonConnect?.account?.address);
+    }
+  }, [okxTonConnect?.connected, okxTonConnect?.account?.address]);
+
   return (
     <div>
       <h2>OkConnectPage</h2>
@@ -29,12 +35,9 @@ export const OkConnectPage: FC = () => {
             })
             .then((res) => {
               console.log("tg-res", res);
-              console.log("okxTonConnect.account?.address", okxTonConnect.account?.address);
-              setAddress(okxTonConnect.account?.address ?? "No linked wallet");
             })
             .catch((error) => {
               console.log("tg-error", error);
-              setAddress("No linked wallet");
             });
         }}
       >
