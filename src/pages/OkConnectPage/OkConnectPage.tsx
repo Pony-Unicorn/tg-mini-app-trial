@@ -1,10 +1,11 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { OKXTonConnect } from "okxconnect";
+import { Button, List, Placeholder, Text } from "@telegram-apps/telegram-ui";
+import { DisplayData } from "@/components/DisplayData/DisplayData.tsx";
 
 export const OkConnectPage: FC = () => {
-  const [address, setAddress] = useState("No linked wallet");
-
-  const [count, setCount] = useState(0);
+  const [address, setAddress] = useState("");
+  const [chain, setChain] = useState("");
 
   const okxTonConnect = useMemo(
     () =>
@@ -17,48 +18,60 @@ export const OkConnectPage: FC = () => {
     []
   );
 
-  useEffect(() => {
-    if (okxTonConnect?.connected && okxTonConnect?.account?.address) {
-      setAddress(okxTonConnect?.account?.address);
-    }
+  const okxConnectHandle = useCallback(() => {
+    okxTonConnect
+      .connect({
+        redirect: "tg://resolve",
+        openUniversalLink: true,
+      })
+      .then((res) => {
+        console.log("tg-res", res);
+      })
+      .catch((error) => {
+        console.log("tg-error", error);
+      });
+  }, [okxTonConnect]);
 
-    console.log("count", count);
-    console.log("okxTonConnect?.account", okxTonConnect?.account);
-    console.log("okxTonConnect?.wallet", okxTonConnect?.wallet);
-  }, [
-    okxTonConnect,
-    okxTonConnect?.connected,
-    okxTonConnect?.account?.address,
-    count,
-  ]);
+  useEffect(() => {
+    const unsubscribe = okxTonConnect.onStatusChange((walletInfo) => {
+      if (walletInfo) {
+        setAddress(walletInfo.account.address);
+        setChain(walletInfo.account.chain);
+      }
+    });
+
+    return unsubscribe;
+  }, [okxTonConnect]);
+
+  if (!okxTonConnect.connected) {
+    return (
+      <Placeholder
+        className="okx-connect-page__placeholder"
+        header="Okx Connect"
+        description={
+          <>
+            <Text>
+              To display the data related to the Okx Connect, it is required to
+              connect your wallet
+            </Text>
+            <Button mode="filled" size="s" onClick={okxConnectHandle}>
+              Connect
+            </Button>
+          </>
+        }
+      />
+    );
+  }
 
   return (
-    <div>
-      <h2>OkConnectPage</h2>
-      <button
-        onClick={() => {
-          console.log("okxTonConnect", okxTonConnect);
-
-          okxTonConnect
-            .connect({
-              redirect: "tg://resolve",
-              openUniversalLink: true,
-            })
-            .then((res) => {
-              console.log("tg-res", res);
-            })
-            .catch((error) => {
-              console.log("tg-error", error);
-            });
-        }}
-      >
-        Connect
-      </button>
-
-      <div>address: {address}</div>
-      <div>connected: {okxTonConnect?.connected}</div>
-
-      <button onClick={() => setCount((p) => p + 1)}>count</button>
-    </div>
+    <List>
+      <DisplayData
+        header="Account"
+        rows={[
+          { title: "Address", value: address },
+          { title: "Chain", value: chain },
+        ]}
+      />
+    </List>
   );
 };
