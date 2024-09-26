@@ -49,7 +49,14 @@ export const OkConnectPage: FC = () => {
         className="okx-connect-page__placeholder"
         header="Okx Connect"
         description={
-          <>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <Text>
               To display the data related to the Okx Connect, it is required to
               connect your wallet
@@ -57,7 +64,7 @@ export const OkConnectPage: FC = () => {
             <Button mode="filled" size="s" onClick={okxConnectHandle}>
               Connect
             </Button>
-          </>
+          </div>
         }
       />
     );
