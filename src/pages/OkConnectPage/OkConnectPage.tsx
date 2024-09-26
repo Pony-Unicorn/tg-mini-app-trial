@@ -45,6 +45,7 @@ export const OkConnectPage: FC = () => {
       </button>
 
       <div>address: {address}</div>
+      <div>connected: {okxTonConnect?.connected}</div>
     </div>
   );
 };
