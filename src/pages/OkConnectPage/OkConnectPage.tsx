@@ -29,6 +29,7 @@ export const OkConnectPage: FC = () => {
             })
             .then((res) => {
               console.log("tg-res", res);
+              console.log("okxTonConnect.account?.address", okxTonConnect.account?.address);
               setAddress(okxTonConnect.account?.address ?? "No linked wallet");
             })
             .catch((error) => {
