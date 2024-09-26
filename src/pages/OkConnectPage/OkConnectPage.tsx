@@ -20,14 +20,13 @@ export const OkConnectPage: FC = () => {
       <h2>OkConnectPage</h2>
       <button
         onClick={() => {
-          console.log("okxTonConnect", okxTonConnect.connect);
+          console.log("okxTonConnect", okxTonConnect);
 
           okxTonConnect
             .connect({
               redirect: "tg://resolve",
               openUniversalLink: true,
             })
-            // .connect()
             .then((res) => {
               console.log("tg-res", res);
               setAddress(okxTonConnect.account?.address ?? "No linked wallet");
